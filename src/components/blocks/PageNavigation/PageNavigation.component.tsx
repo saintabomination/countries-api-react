@@ -1,0 +1,13 @@
+const PageNavigation = (): JSX.Element =>
+  (
+    <nav>
+      <h2>Page Navigation</h2>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </nav>
+  );
+
+export default PageNavigation;
