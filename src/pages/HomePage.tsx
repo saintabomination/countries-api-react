@@ -1,11 +1,10 @@
-import PageNavigation from '../components/blocks/PageNavigation';
+import DefaultLayout from "../layouts/DefaultLayout";
 
 const HomePage = (): JSX.Element =>
   (
-    <div>
-      <PageNavigation />
+    <DefaultLayout>
       <h1>Home</h1>
-    </div>
+    </DefaultLayout>
   );
 
 export default HomePage;
