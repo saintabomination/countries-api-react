@@ -5,6 +5,7 @@ import Icon from '../components/elements/Icon';
 import Input from '../components/elements/Input';
 import Collection from '../components/elements/Collection'
 import Card from '../components/elements/Card';
+import Loader from '../components/elements/Loader';
 
 import type { ChangeEvent } from 'react';
 
@@ -12,6 +13,7 @@ import type { Country } from '../typings/countryTypes';
 
 const HomePage = (): JSX.Element => {
   const [countryData, setCountryData] = useState<Country[]>([]);
+  const [countryDataLoading, setCountryDataLoading] = useState<boolean>(true);
   const [countryQuery, setCountryQuery] = useState<string>('');
 
   const fetchCountries = async (): Promise<Country[]> => {
@@ -21,7 +23,10 @@ const HomePage = (): JSX.Element => {
   }
 
   useEffect(() => {
-    fetchCountries().then(countries => setCountryData(countries));
+    fetchCountries().then(countries => {
+      setCountryData(countries);
+      setCountryDataLoading(false);
+    });
   }, []);
 
   const filteredCountries = countryData.filter(
@@ -39,12 +44,14 @@ const HomePage = (): JSX.Element => {
         defaultValue={countryQuery}
       />
       <Collection>
-        {filteredCountries && filteredCountries.map((country, index) => (
+        {!countryDataLoading ? filteredCountries && filteredCountries.map((country, index) => (
           <Card key={index}>
             <img src={country.flags.png} alt={country.name.common} height={48} />
             <p>{country.name.common}</p>
           </Card>
-        ))}
+        )) : (
+          <Loader />
+        )}
       </Collection>
     </DefaultLayout>
   );
