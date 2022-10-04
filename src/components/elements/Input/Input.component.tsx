@@ -1,10 +1,16 @@
+import './Input.styles.scss';
+
 type Props = {
+  icon?: React.ReactNode;
   [x:string]: any;
 };
 
-const Input = ({ ...otherProps }: Props): JSX.Element =>
+const Input = ({ icon, ...otherProps }: Props): JSX.Element =>
   (
-    <input className="input" {...otherProps} />
+    <div className="input">
+      {icon ?? null}
+      <input {...otherProps} />
+    </div>
   );
 
 export default Input;
