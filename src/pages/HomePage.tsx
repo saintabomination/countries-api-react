@@ -1,23 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import DefaultLayout from "../layouts/DefaultLayout";
-import Card from "../components/elements/Card";
+import DefaultLayout from '../layouts/DefaultLayout';
+import Card from '../components/elements/Card';
+
+import type { Country } from '../typings/countryTypes';
 
 const HomePage = (): JSX.Element => {
+  const [countryData, setCountryData] = useState<Country[]>([]);
+
+  const fetchCountries = async (): Promise<Country[]> => {
+    const res = await fetch('https://restcountries.com/v3.1/all');
+    const countries = await res.json();
+    return countries;
+  }
+
   useEffect(() => {
-    fetch('https://restcountries.com/v3.1/all')
-      .then(res => res.json())
-      .then(data => console.log(data));
+    fetchCountries().then(countries => setCountryData(countries));
   }, []);
 
   return (
     <DefaultLayout>
       <h1>Home</h1>
-      <Card>Card</Card>
-      <Card>Card</Card>
-      <Card>Card</Card>
-      <Card>Card</Card>
-      <Card>Card</Card>
+      {countryData.map(country => (
+        <Card>
+          {country.name.common}
+        </Card>
+      ))}
     </DefaultLayout>
   );
 }
