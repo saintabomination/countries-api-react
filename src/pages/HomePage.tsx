@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
+import Collection from '../components/elements/Collection';
 import Card from '../components/elements/Card';
 
 import type { Country } from '../typings/countryTypes';
@@ -23,12 +24,14 @@ const HomePage = (): JSX.Element => {
   return (
     <DefaultLayout>
       <h1>Home</h1>
-      {countryData.map((country, index) => (
-        <Card key={index}>
-          <img src={country.flags.png} alt={country.name.common} height={48} />
-          <p>{country.name.common}</p>
-        </Card>
-      ))}
+      <Collection>
+        {countryData.map((country, index) => (
+          <Card key={index}>
+            <img src={country.flags.png} alt={country.name.common} height={48} />
+            <p>{country.name.common}</p>
+          </Card>
+        ))}
+      </Collection>
     </DefaultLayout>
   );
 }
