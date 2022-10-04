@@ -5,6 +5,8 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import type { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
 
+import './Icon.styles.scss';
+
 library.add(fas);
 library.add(fab);
 
@@ -15,7 +17,7 @@ type Props = {
 
 const Icon = ({ name, type }: Props): JSX.Element =>
   (
-    <div>
+    <div className="icon">
       <FontAwesomeIcon icon={[type, name]} />
     </div>
   );

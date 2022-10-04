@@ -37,7 +37,6 @@ const HomePage = (): JSX.Element => {
   return (
     <DefaultLayout>
       <h1>Home</h1>
-      <Icon name="paper-plane" type="fas" />
       <Input
         type="text"
         onChange={(e: ChangeEvent<HTMLInputElement>) => setCountryQuery(e.target.value)}
@@ -47,7 +46,18 @@ const HomePage = (): JSX.Element => {
         {!countryDataLoading ? filteredCountries && filteredCountries.map((country, index) => (
           <Card key={index}>
             <img src={country.flags.png} alt={country.name.common} height={48} />
-            <p>{country.name.common}</p>
+            <div>
+              <Icon name="flag" type="fas" />
+              <span>{country.name.common}</span>
+            </div>
+            <div>
+              <Icon name="earth-americas" type="fas" />
+              <span>{country.region}</span>
+            </div>
+            <div>
+              <Icon name="user" type="fas" />
+              <span>{country.population}</span>
+            </div>
           </Card>
         )) : (
           <Loader />
