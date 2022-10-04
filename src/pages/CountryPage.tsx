@@ -22,6 +22,7 @@ const CountryPage = (): JSX.Element => {
       setCountryData(country);
       setCountryDataLoading(false);
     });
+    // eslint-disable-next-line
   }, []);
 
   return (

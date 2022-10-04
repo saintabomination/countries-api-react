@@ -39,6 +39,7 @@ const HomePage = (): JSX.Element => {
       setCountryData(countries);
       setCountryDataLoading(false);
     })();
+    // eslint-disable-next-line
   }, []);
 
   const filteredCountries = countryData.filter(

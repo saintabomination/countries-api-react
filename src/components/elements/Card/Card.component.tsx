@@ -1,10 +1,12 @@
+import './Card.styles.scss';
+
 type Props = {
   children: React.ReactNode;
 };
 
 const Card = ({ children }: Props): JSX.Element =>
   (
-    <div>
+    <div className="card">
       {children}
     </div>
   );
