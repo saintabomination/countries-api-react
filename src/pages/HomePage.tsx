@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
-import Collection from '../components/elements/Collection';
+import Icon from '../components/elements/Icon';
 import Input from '../components/elements/Input';
+import Collection from '../components/elements/Collection'
 import Card from '../components/elements/Card';
 
 import type { ChangeEvent } from 'react';
@@ -31,6 +32,7 @@ const HomePage = (): JSX.Element => {
   return (
     <DefaultLayout>
       <h1>Home</h1>
+      <Icon name="paper-plane" type="fas" />
       <Input
         type="text"
         onChange={(e: ChangeEvent<HTMLInputElement>) => setCountryQuery(e.target.value)}
