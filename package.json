@@ -1,6 +1,7 @@
 {
-  "name": "countries-api",
+  "name": "countries-api-react",
   "version": "0.1.0",
+  "homepage": "https://saintabomination.github.io/countries-api-react",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -23,6 +24,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -48,6 +51,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-common-types": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "sass": "^1.55.0"
   }
 }
