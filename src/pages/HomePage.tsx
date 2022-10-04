@@ -38,7 +38,7 @@ const HomePage = (): JSX.Element => {
     <DefaultLayout>
       <h1>Home</h1>
       <Input
-        icon={<Icon name="magnifying-glass" type="fas" />}
+        icon={<Icon name="magnifying-glass" type="fas" size={0.8} />}
         type="text"
         onChange={(e: ChangeEvent<HTMLInputElement>) => setCountryQuery(e.target.value)}
         defaultValue={countryQuery}

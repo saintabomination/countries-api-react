@@ -13,11 +13,14 @@ library.add(fab);
 type Props = {
   name: IconName;
   type: IconPrefix;
+  size?: number;
 };
 
-const Icon = ({ name, type }: Props): JSX.Element =>
+const Icon = ({ name, type, size = 1 }: Props): JSX.Element =>
   (
-    <div className="icon">
+    <div className="icon" style={{
+      fontSize: `${size}em`,
+    }}>
       <FontAwesomeIcon icon={[type, name]} />
     </div>
   );
