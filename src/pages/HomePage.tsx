@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import DefaultLayout from '../layouts/DefaultLayout';
@@ -7,16 +8,20 @@ import Input from '../components/elements/Input';
 import Collection from '../components/elements/Collection'
 import Card from '../components/elements/Card';
 import Loader from '../components/elements/Loader';
+import { setCountries } from '../redux/slices/dataSlice';
 
 import type { ChangeEvent } from 'react';
 
+import type { RootState } from '../redux/store';
 import type { Country } from '../typings/countryTypes';
 
 const HomePage = (): JSX.Element => {
   const [countryData, setCountryData] = useState<Country[]>([]);
   const [countryDataLoading, setCountryDataLoading] = useState<boolean>(true);
   const [countryQuery, setCountryQuery] = useState<string>('');
+  const { countries } = useSelector((state: RootState) => state.data);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const fetchCountries = async (): Promise<Country[]> => {
@@ -26,10 +31,15 @@ const HomePage = (): JSX.Element => {
   }
 
   useEffect(() => {
-    fetchCountries().then(countries => {
+    !countries || countries.length === 0 ? fetchCountries().then(countries => {
+      console.log('fetch');
       setCountryData(countries);
       setCountryDataLoading(false);
-    });
+      dispatch(setCountries(countries));
+    }) : (() => {
+      setCountryData(countries);
+      setCountryDataLoading(false);
+    })();
   }, []);
 
   const filteredCountries = countryData.filter(
