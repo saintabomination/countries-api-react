@@ -18,12 +18,15 @@ const HomePage = (): JSX.Element => {
     fetchCountries().then(countries => setCountryData(countries));
   }, []);
 
+  console.log(countryData);
+
   return (
     <DefaultLayout>
       <h1>Home</h1>
-      {countryData.map(country => (
-        <Card>
-          {country.name.common}
+      {countryData.map((country, index) => (
+        <Card key={index}>
+          <img src={country.flags.png} alt={country.name.common} height={48} />
+          <p>{country.name.common}</p>
         </Card>
       ))}
     </DefaultLayout>
