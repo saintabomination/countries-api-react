@@ -29,6 +29,12 @@ const CountryPage = (): JSX.Element => {
       {countryData ? (
         <>
           <h1>{countryData.name?.common}</h1>
+          <img src={countryData.flags.png} alt={countryData.name.common} height={96} />
+          <p>Population: {countryData.population}</p>
+          <p>Top level domain: {countryData.tld}</p>
+          <p>Capital: {countryData.capital}</p>
+          <p>Currencies: {Object.keys(countryData.currencies).join(', ')}</p>
+          <p>Borders: {countryData.borders?.join(', ')}</p>
         </>
       ) : null}
       {countryDataLoading ? (

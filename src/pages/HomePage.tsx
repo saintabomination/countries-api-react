@@ -32,7 +32,6 @@ const HomePage = (): JSX.Element => {
 
   useEffect(() => {
     !countries || countries.length === 0 ? fetchCountries().then(countries => {
-      console.log('fetch');
       setCountryData(countries);
       setCountryDataLoading(false);
       dispatch(setCountries(countries));
