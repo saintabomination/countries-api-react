@@ -9,4 +9,5 @@ export type Country = {
     png: string;
     svg: string;
   };
+  cca3: string;
 };

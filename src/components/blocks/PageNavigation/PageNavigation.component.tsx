@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom';
+
 const PageNavigation = (): JSX.Element =>
   (
     <nav>
       <h2>Page Navigation</h2>
       <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
+        <li><Link to="/">Home</Link></li>
       </ul>
     </nav>
   );

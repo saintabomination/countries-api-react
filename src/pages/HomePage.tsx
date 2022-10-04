@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Icon from '../components/elements/Icon';
@@ -15,6 +16,8 @@ const HomePage = (): JSX.Element => {
   const [countryData, setCountryData] = useState<Country[]>([]);
   const [countryDataLoading, setCountryDataLoading] = useState<boolean>(true);
   const [countryQuery, setCountryQuery] = useState<string>('');
+
+  const navigate = useNavigate();
 
   const fetchCountries = async (): Promise<Country[]> => {
     const res = await fetch('https://restcountries.com/v3.1/all');
@@ -59,6 +62,7 @@ const HomePage = (): JSX.Element => {
               <Icon name="user" type="fas" />
               <span>{country.population}</span>
             </div>
+            <button onClick={() => navigate(`/country/${country.cca3.toLowerCase()}`)}>View</button>
           </Card>
         )) : (
           <Loader />
