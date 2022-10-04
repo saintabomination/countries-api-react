@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import DefaultLayout from '../layouts/DefaultLayout';
 import Collection from '../components/elements/Collection';
+import Input from '../components/elements/Input';
 import Card from '../components/elements/Card';
 
 import type { ChangeEvent } from 'react';
@@ -30,9 +31,10 @@ const HomePage = (): JSX.Element => {
   return (
     <DefaultLayout>
       <h1>Home</h1>
-      <input
+      <Input
         type="text"
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setCountryQuery(e.target.value)} defaultValue={countryQuery}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setCountryQuery(e.target.value)}
+        defaultValue={countryQuery}
       />
       <Collection>
         {filteredCountries && filteredCountries.map((country, index) => (
